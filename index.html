@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python sorting methods</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="main-heading">عمل sorting لل array بلغة python</h1>
+    <p>لنفترض أن لدينا ال list الآتيه ونريد تطبيق الطرق عليها</p>
+    <code>numbers = [3, 9, 1, 0, 2, 5, 8]</code>
+    <!-- Way 1 -->
+    <h3 class="way">الطريقة الأولى</h3>
+    <p>استخدام ال <code>()reverse</code></p>
+    <pre>
+      numbers.reverse()
+    </pre>
+    <p>النتيجة: <code>[9, 8, 5, 3, 2, 1, 0]</code></p>
+    <p>لاحظ أن <code>reverse</code> لا تقوم بإرجاع قيمة (array جديدة) فإذا قمنا بتجربة الكود الآتي فستكون التنيجة <code>None</code></p>
+    <pre>
+      new_list = numbers.reverse()
+      print(new_list)
+    </pre>
+    <!-- Way 2 -->
+    <h3 class="way">الطريقة الثانية</h3>
+    <p>استخدام <code>for</code></p>
+    <pre>
+      for n in range(len(numbers) // 2):
+        numbers[n], numbers[-1 - n] = numbers[-1 - n], numbers[n]  
+    </pre>
+    <p>في هذا المثال قد قمنا بإيجاد نقطة المنتصف لل array ثم بعد ذلك استبدال كل عنصر من عناصر النصف الأول بما يقابله من عناصر النصف الثاني</p>
+    <p>النتيجة: <code>[9, 8, 5, 3, 2, 1, 0]</code></p>
+    <h3 class="way">الطريقة الثالثة</h3>
+    <p>استخدام <code>for</code></p>
+    <p>هنا طريقة أخرى لعمل sorting لل array باستخدام <code>for</code></p>
+    <pre>
+      for n in range(len(numbers)):
+        last_n = numbers.pop()
+        numbers.insert(n, last_n)
+    </pre>
+    <p>في هذا المثال قمنا بعمل loop على ال array، وفي كل مرة نقوم باستخراج آخر عنصر في ال array وتخزينه في variable، ومن ثم استخدام <code>insert</code> التي تأخذ منك رقم ال index الذي تريد وضع عنصر معين بعده، فنقوم بمرير ال index الخاص بكل عنصر في array ومن ثم وضع العنصر الذي استخرجناه في بداية ال array</p>
+    <p>النتيجة: <code>[9, 8, 5, 3, 2, 1, 0]</code></p>
+    <h3 class="way">الطريقة الرابعة</h3>
+    <p>استخدام <code>reversed</code></p>
+    <pre>
+      list(reversed(numbers)
+    </pre>
+    <p><code>reverse</code> تقوم بعكس ترتيب العناصر داخل ال array ، ولكنها لا تقوم بإرجاع قيمة ، أي أنه لا يمكنك تخزينها في variable كما بالمثال الآتي : </p>
+    <pre>
+      new_list = list(reversed(numbers))
+    </pre>
+    <p>بعد ما نقوم بعمل reverse لل array نقوم بتحويل النتيجة للنوع list ، لأن <code>reversed</code> لا تقوم بإرجاع بيانات نوعها list</p>
+    <p>النتيجة: <code>[9, 8, 5, 3, 2, 1, 0]</code></p>
+    <h3 class="way">الطريقة الخامسة</h3>
+    <p>استخدام ال <code>slicing</code></p>
+    <pre>
+      new_list = numbers[::-1]
+    </pre>
+    <p>يمكننا استخدام ال [first_index:last_index:steps] لعمل reverse لل array</p>
+    <p>في المثال السابق لم نكتب ال index البدائي ولا النهائي ، وهذا معناه أننا سنأخذ جميع العناصر الموجودة في ال array، الرقم -1 في ال array يشير أننا سنمر على العناصر عكسيا ( البداية من النهاية والنهاية من البداية )</p>
+  </div>  
+</body>
+</html>
